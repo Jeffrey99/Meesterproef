@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -38,6 +39,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private AudioSource m_AudioSource;
 
+
+        //STAMINA
+        [SerializeField] private float stamina;
+        private float staminacheckzero;
+        [SerializeField] private KeyCode runKey;
+        [SerializeField] private Image staminaUI;
         // Use this for initialization
         private void Start()
         {
@@ -55,7 +62,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         // Update is called once per frame
         private void Update() {
+            staminaUI.fillAmount = stamina;
+            if (Input.GetKey(runKey) && stamina > 0f) {
+                stamina -= 0.1f * Time.deltaTime;
+            }
+            else {
+                if(stamina < 1)
+                stamina += 0.1f * Time.deltaTime;
+            }
 
+            if(stamina < 0.025f) {
+                m_RunSpeed = 4;
+            } else {
+                m_RunSpeed = 6;
+            }
             RotateView();
         }
 
