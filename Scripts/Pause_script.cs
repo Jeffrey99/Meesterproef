@@ -16,6 +16,8 @@ public class Pause_script : MonoBehaviour
     [SerializeField] private GameObject AudioSettings;
     [SerializeField] private GameObject ControlSettings;
     [SerializeField] private GameObject GraphicSettings;
+    [SerializeField] private GameObject auraonui;
+    [SerializeField] private GameObject auraoffui;
     [SerializeField] private Camera cam;
     private bool esc;
     // Start is called before the first frame update
@@ -75,8 +77,13 @@ public class Pause_script : MonoBehaviour
 
     public void auraon() {
         cam.GetComponent<Aura2API.AuraCamera>().enabled = true;
+        auraoffui.SetActive(false);
+        auraonui.SetActive(true);
+
     }
     public void auraoff() {
         cam.GetComponent<Aura2API.AuraCamera>().enabled = false;
+        auraoffui.SetActive(true);
+        auraonui.SetActive(false);
     }
 }
