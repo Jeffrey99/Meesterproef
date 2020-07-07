@@ -11,6 +11,8 @@ public class Flashlight_script : MonoBehaviour
     [SerializeField] private float followspeed;
     [SerializeField] private KeyCode reloadbutton;
     [SerializeField] private KeyCode powerbutton;
+    [SerializeField] private KeyCode toggleDistance;
+
     private bool power;
 
     [Header("DISTANCER")]
@@ -66,13 +68,13 @@ public class Flashlight_script : MonoBehaviour
 
                     }
                 }
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetKey(toggleDistance))
                 {
                     this.GetComponent<Light>().range = maxRange;
                     this.GetComponent<Light>().spotAngle = maxAngle;
 
                 }
-                if (Input.GetMouseButtonUp(1))
+                if (Input.GetKeyUp(toggleDistance))
                 {
                     this.GetComponent<Light>().range = minRange;
                     this.GetComponent<Light>().spotAngle = minAngle;

@@ -9,6 +9,7 @@ public class Lockpick_script : MonoBehaviour
     private bool solved;
     private float distance;
     public Quaternion rot;
+    [SerializeField] private string ScrollAxis;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class Lockpick_script : MonoBehaviour
 
         if (lockpick.active)
         {
-            lockpick.transform.Rotate(Vector3.up * 2500 * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime);
+            lockpick.transform.Rotate(Vector3.up * 2500 * Input.GetAxis(ScrollAxis) * Time.deltaTime);
         }
 
         if(distance > 2)

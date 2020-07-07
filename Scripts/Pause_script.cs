@@ -19,6 +19,7 @@ public class Pause_script : MonoBehaviour
     [SerializeField] private GameObject auraonui;
     [SerializeField] private GameObject auraoffui;
     [SerializeField] private Camera cam;
+    [SerializeField] private KeyCode activatePause;
     private bool esc;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class Pause_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(activatePause))
         {
             esc = !esc;
             if (esc)
